@@ -3,296 +3,193 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dimple Singh — Portfolio</title>
+<title>Dimple Singh — Software Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Playfair+Display:ital,wght@1,700;1,800&display=swap" rel="stylesheet">
 <style>
-/* ─── TOKENS ─────────────────────────────────────────── */
 :root {
-  --purple: #5B4DCC;
-  --purple-light: #ede9ff;
-
-  /* role colours */
-  --sde-c:   #5B4DCC; --sde-bg:  #ede9ff;
-  --qa-c:    #0e7a5a; --qa-bg:   #e6f7f1;
-  --apm-c:   #b8420a; --apm-bg:  #fff0e8;
-
-  --role-c:  var(--sde-c);
-  --role-bg: var(--sde-bg);
-
-  /* light mode */
-  --bg:        #f8f7f4;
-  --bg-alt:    #eeecea;
-  --surface:   #ffffff;
-  --border:    #e4e1db;
-  --text:      #111010;
-  --text2:     #4a4742;
-  --text3:     #8a857e;
-  --text4:     #b8b3ac;
-  --nav-bg:    rgba(248,247,244,0.95);
-
-  --font-body: 'DM Sans', sans-serif;
+  --accent:     #5B4DCC;
+  --accent-bg:  #ede9ff;
+  --bg:         #f8f7f4;
+  --bg-alt:     #eeecea;
+  --surface:    #ffffff;
+  --border:     #e4e1db;
+  --text:       #111010;
+  --text2:      #4a4742;
+  --text3:      #8a857e;
+  --text4:      #b8b3ac;
+  --nav-bg:     rgba(248,247,244,0.95);
+  --font-body:   'DM Sans', sans-serif;
   --font-italic: 'Playfair Display', Georgia, serif;
 }
 
 [data-theme="dark"] {
-  --bg:        #0f0f11;
-  --bg-alt:    #17171a;
-  --surface:   #1e1e22;
-  --border:    #2e2e34;
-  --text:      #f0ede8;
-  --text2:     #b8b3ac;
-  --text3:     #6e6a64;
-  --text4:     #44403c;
-  --nav-bg:    rgba(15,15,17,0.95);
-  --sde-bg:    #1e1b36;
-  --qa-bg:     #0e2820;
-  --apm-bg:    #2d1a0e;
-  --role-bg:   var(--sde-bg);
+  --accent-bg:  #1e1b36;
+  --bg:         #0f0f11;
+  --bg-alt:     #17171a;
+  --surface:    #1e1e22;
+  --border:     #2e2e34;
+  --text:       #f0ede8;
+  --text2:      #b8b3ac;
+  --text3:      #6e6a64;
+  --text4:      #44403c;
+  --nav-bg:     rgba(15,15,17,0.95);
 }
 
-/* ─── RESET ──────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.75;
-  background: var(--bg);
-  color: var(--text);
+  font-size: 16px; line-height: 1.75;
+  background: var(--bg); color: var(--text);
   transition: background 0.3s, color 0.3s;
   overflow-x: hidden;
 }
 
-/* ─── NAV ─────────────────────────────────────────────── */
+/* ── NAV ── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-  background: var(--nav-bg);
-  backdrop-filter: blur(12px);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--nav-bg); backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  height: 62px;
-  display: flex; align-items: center;
-  padding: 0 3rem;
-  justify-content: space-between;
+  height: 62px; display: flex; align-items: center;
+  padding: 0 3rem; justify-content: space-between;
   transition: background 0.3s, border-color 0.3s;
 }
-
 .nav-logo {
-  font-family: var(--font-body);
   font-size: 1rem; font-weight: 600;
-  color: var(--role-c);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  transition: color 0.35s;
+  color: var(--accent); text-decoration: none;
 }
-
 .nav-right { display: flex; align-items: center; gap: 2.5rem; }
-
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
-  font-size: 14px; font-weight: 400;
-  color: var(--text3); text-decoration: none;
-  transition: color 0.2s;
+  font-size: 14px; font-weight: 400; color: var(--text3);
+  text-decoration: none; transition: color 0.2s;
 }
-.nav-links a:hover { color: var(--text); }
-.nav-links a.active-nav { color: var(--role-c); font-weight: 500; transition: color 0.35s; }
+.nav-links a:hover, .nav-links a.active-nav { color: var(--accent); }
 
-/* Dark mode toggle — pill style matching screenshot */
 .theme-toggle {
-  display: flex; align-items: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 3px;
-  gap: 2px;
-  cursor: pointer;
-  transition: background 0.3s, border-color 0.3s;
+  display: flex; align-items: center; gap: 2px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 100px; padding: 3px; cursor: pointer;
+  transition: background 0.3s;
 }
-.theme-toggle-btn {
-  width: 28px; height: 28px; border-radius: 50%;
-  border: none; cursor: pointer; font-size: 13px;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.25s;
-  background: transparent; color: var(--text3);
+.ttbtn {
+  width: 28px; height: 28px; border-radius: 50%; border: none;
+  cursor: pointer; font-size: 13px; display: flex; align-items: center;
+  justify-content: center; background: transparent; color: var(--text3);
+  transition: background 0.25s, color 0.25s;
 }
-.theme-toggle-btn.active {
-  background: var(--role-c); color: white;
-  transition: background 0.35s;
-}
+.ttbtn.on { background: var(--accent); color: white; }
 
-/* ─── ROLE BAR ────────────────────────────────────────── */
-.role-bar {
-  position: fixed; top: 62px; left: 0; right: 0; z-index: 200;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  height: 44px; gap: 0;
-  transition: background 0.3s, border-color 0.3s;
-}
-.role-bar-label {
-  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--text3);
-  margin-right: 1.25rem;
-}
-.role-btn {
-  display: flex; align-items: center; gap: 6px;
-  padding: 0 1.4rem; height: 44px;
-  font-family: var(--font-body); font-size: 13px; font-weight: 500;
-  border: none; background: transparent; cursor: pointer;
-  color: var(--text3); position: relative;
-  transition: color 0.25s; letter-spacing: 0.01em;
-}
-.role-btn::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 2px; background: var(--role-c);
-  transform: scaleX(0); transition: transform 0.25s, background 0.35s;
-}
-.role-btn.active { color: var(--role-c); transition: color 0.35s; }
-.role-btn.active::after { transform: scaleX(1); }
-.role-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: currentColor; opacity: 0.35; transition: opacity 0.25s;
-}
-.role-btn.active .role-dot { opacity: 1; }
-
-/* ─── LAYOUT ──────────────────────────────────────────── */
-.site { padding-top: 106px; }
+/* ── LAYOUT ── */
+.site { padding-top: 62px; }
 .container { max-width: 1120px; margin: 0 auto; padding: 0 3rem; }
 
-/* ─── SECTION LABELS ─────────────────────────────────── */
-.section-kicker {
+/* ── SECTION KICKER ── */
+.kicker {
   display: flex; align-items: center; gap: 8px;
   font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--role-c);
-  margin-bottom: 1rem; transition: color 0.35s;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
 }
-.section-kicker::before { content: '—'; }
+.kicker::before { content: '—'; }
 
-/* ─── HEADING STYLE (matching screenshot) ─────────────── */
-.heading-display {
+/* ── HEADINGS ── */
+.h-display {
   font-family: var(--font-body);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 700; line-height: 1.1;
-  letter-spacing: -0.03em; color: var(--text);
-  margin-bottom: 2rem;
+  letter-spacing: -0.03em; color: var(--text); margin-bottom: 2rem;
 }
-.heading-display em {
+.h-display em {
   font-family: var(--font-italic);
-  font-style: italic; font-weight: 800;
-  color: var(--role-c); transition: color 0.35s;
+  font-style: italic; font-weight: 800; color: var(--accent);
 }
 
-/* ─── ABOUT SECTION ───────────────────────────────────── */
-.about-section {
-  padding: 5rem 0 4rem;
-  border-bottom: 1px solid var(--border);
-}
-.about-grid {
-  display: grid; grid-template-columns: 1fr 420px; gap: 5rem; align-items: start;
-}
+/* ── ABOUT ── */
+.about-section { padding: 5rem 0 4rem; border-bottom: 1px solid var(--border); }
+.about-grid { display: grid; grid-template-columns: 1fr 400px; gap: 5rem; align-items: start; }
+
 .about-body p {
   font-size: 15.5px; color: var(--text2); font-weight: 300;
   line-height: 1.8; margin-bottom: 1.25rem;
 }
-.about-body p:last-child { margin-bottom: 0; }
+.about-body p:last-of-type { margin-bottom: 0; }
 
-/* Stat cards — matching screenshot 2×2 grid */
+.cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+
+/* Stat cards */
 .stat-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
   background: var(--border); border: 1px solid var(--border);
   border-radius: 12px; overflow: hidden;
 }
-.stat-card {
-  background: var(--surface); padding: 1.75rem 1.5rem;
-  transition: background 0.3s;
-}
+.stat-card { background: var(--surface); padding: 1.75rem 1.5rem; transition: background 0.3s; }
 .stat-num {
-  font-family: var(--font-body);
-  font-size: 2.6rem; font-weight: 700;
-  color: var(--role-c); line-height: 1; margin-bottom: 6px;
-  letter-spacing: -0.03em; transition: color 0.35s;
+  font-size: 2.6rem; font-weight: 700; color: var(--accent);
+  line-height: 1; margin-bottom: 6px; letter-spacing: -0.03em;
 }
-.stat-label { font-size: 13px; color: var(--text3); font-weight: 400; }
+.stat-label { font-size: 13px; color: var(--text3); }
 
-/* ─── ROLE PANELS ─────────────────────────────────────── */
-.role-panel { display: none; }
-.role-panel.active { display: block; }
-.role-panel-flex { display: none; }
-.role-panel-flex.active { display: flex; flex-direction: column; gap: 0; }
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-body); font-size: 14px; font-weight: 500;
+  padding: 11px 26px; border-radius: 8px; cursor: pointer;
+  text-decoration: none; transition: all 0.2s; border: none;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { opacity: 0.85; }
+.btn-outline { background: transparent; color: var(--text2); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-/* ─── SKILLS SECTION ──────────────────────────────────── */
+/* ── SKILLS ── */
 .skills-section {
-  padding: 5rem 0;
-  background: var(--bg-alt);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.3s;
+  padding: 5rem 0; background: var(--bg-alt);
+  border-bottom: 1px solid var(--border); transition: background 0.3s;
 }
-
-/* Skill cards matching screenshot — category label + pill tags */
 .skills-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.25rem;
 }
 .skill-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 10px; padding: 1.5rem;
-  transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+  transition: background 0.3s, box-shadow 0.2s;
 }
 .skill-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-
 .skill-cat {
   font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--text3);
-  margin-bottom: 1rem;
+  text-transform: uppercase; color: var(--text3); margin-bottom: 1rem;
 }
 .tag-group { display: flex; flex-wrap: wrap; gap: 7px; }
-
-/* Tags — coloured pill outlines matching screenshot */
 .tag {
-  font-size: 12px; font-weight: 400;
-  padding: 3px 11px; border-radius: 100px;
-  border: 1px solid; background: transparent;
-  transition: opacity 0.2s;
+  font-size: 12px; padding: 3px 11px; border-radius: 100px;
+  border: 1px solid; background: transparent; transition: opacity 0.2s; cursor: default;
 }
-.tag:hover { opacity: 0.75; }
-/* Tag colour variants (matching screenshot's multicolour approach) */
-.t-purple { color: var(--sde-c); border-color: var(--sde-c); }
-.t-green  { color: #0e7a5a;      border-color: #0e7a5a; }
-.t-orange { color: #c05621;      border-color: #c05621; }
-.t-blue   { color: #1a56a0;      border-color: #1a56a0; }
-.t-rose   { color: #c0266a;      border-color: #c0266a; }
-.t-teal   { color: #0e7a6e;      border-color: #0e7a6e; }
-.t-amber  { color: #a06a00;      border-color: #a06a00; }
+.tag:hover { opacity: 0.7; }
+.t-purple { color: #5B4DCC; border-color: #5B4DCC; }
+.t-green  { color: #0e7a5a; border-color: #0e7a5a; }
+.t-orange { color: #c05621; border-color: #c05621; }
+.t-blue   { color: #1a56a0; border-color: #1a56a0; }
+.t-rose   { color: #c0266a; border-color: #c0266a; }
+.t-teal   { color: #0e7a6e; border-color: #0e7a6e; }
+.t-amber  { color: #a06a00; border-color: #a06a00; }
 
-/* ─── EXPERIENCE SECTION ──────────────────────────────── */
-.exp-section {
-  padding: 5rem 0;
-  border-bottom: 1px solid var(--border);
-}
-
+/* ── EXPERIENCE ── */
+.exp-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+.timeline { display: flex; flex-direction: column; }
 .tl-item {
   display: grid; grid-template-columns: 200px 1fr;
-  gap: 3rem; padding: 2.75rem 0;
-  border-bottom: 1px solid var(--border);
+  gap: 3rem; padding: 2.75rem 0; border-bottom: 1px solid var(--border);
 }
 .tl-item:first-child { padding-top: 0; }
 .tl-item:last-child { border-bottom: none; padding-bottom: 0; }
-
 .tl-date {
   font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--text4); margin-bottom: 4px;
 }
-.tl-company {
-  font-size: 14px; font-weight: 600; color: var(--role-c);
-  transition: color 0.35s;
-}
-.tl-role {
-  font-size: 1.05rem; font-weight: 600; color: var(--text);
-  margin-bottom: 6px; letter-spacing: -0.01em;
-}
-.tl-stack {
-  font-size: 12px; color: var(--text3); font-style: italic; margin-bottom: 1rem;
-}
+.tl-company { font-size: 14px; font-weight: 600; color: var(--accent); }
+.tl-role { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.tl-stack { font-size: 12px; color: var(--text3); font-style: italic; margin-bottom: 1rem; }
 .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 9px; }
 .tl-bullets li {
   font-size: 14.5px; color: var(--text2); font-weight: 300;
@@ -300,21 +197,15 @@ nav {
 }
 .tl-bullets li::before {
   content: '→'; position: absolute; left: 0;
-  color: var(--role-c); font-size: 12px; top: 3px;
-  transition: color 0.35s;
+  color: var(--accent); font-size: 12px; top: 3px;
 }
 
-/* ─── PROJECTS SECTION ─────────────────────────────────── */
+/* ── PROJECTS ── */
 .projects-section {
-  padding: 5rem 0;
-  background: var(--bg-alt);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.3s;
+  padding: 5rem 0; background: var(--bg-alt);
+  border-bottom: 1px solid var(--border); transition: background 0.3s;
 }
-.projects-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-}
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
 .project-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 12px; padding: 2rem; position: relative;
@@ -322,18 +213,14 @@ nav {
 }
 .project-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
 .project-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--role-c); transition: background 0.35s;
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--accent);
 }
 .project-type {
   font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--role-c); margin-bottom: 0.75rem;
-  transition: color 0.35s;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
 }
-.project-name {
-  font-size: 1.05rem; font-weight: 600; color: var(--text);
-  margin-bottom: 0.75rem; letter-spacing: -0.01em;
-}
+.project-name { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.75rem; }
 .project-body {
   font-size: 13.5px; color: var(--text2); font-weight: 300;
   line-height: 1.7; margin-bottom: 1.25rem;
@@ -345,81 +232,87 @@ nav {
   transition: background 0.3s;
 }
 
-/* ─── CONTACT SECTION ─────────────────────────────────── */
-.contact-section { padding: 5rem 0; }
-.contact-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+/* ── RESEARCH SECTION ── */
+.research-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+.research-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 2.5rem;
+  display: grid; grid-template-columns: 1fr 260px;
+  gap: 3rem; align-items: start;
+  transition: background 0.3s;
 }
+.research-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
+}
+.research-title { font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 1rem; line-height: 1.4; }
+.research-body {
+  font-size: 14px; color: var(--text2); font-weight: 300;
+  line-height: 1.75; margin-bottom: 1.25rem;
+}
+.research-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.research-tag {
+  font-size: 11px; padding: 2px 10px; border-radius: 100px;
+  background: var(--bg); border: 1px solid var(--border); color: var(--text3);
+}
+.research-metrics {
+  display: flex; flex-direction: column; gap: 1px;
+  background: var(--border); border-radius: 10px; overflow: hidden;
+}
+.rm-item { background: var(--surface); padding: 1.1rem 1.25rem; transition: background 0.3s; }
+.rm-num {
+  font-size: 1.8rem; font-weight: 700; color: var(--accent);
+  line-height: 1; margin-bottom: 3px; letter-spacing: -0.02em;
+}
+.rm-label { font-size: 12px; color: var(--text3); font-weight: 300; }
+
+/* ── CONTACT ── */
+.contact-section { padding: 5rem 0; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
 .contact-text h2 {
   font-family: var(--font-body); font-size: 2.2rem; font-weight: 700;
   letter-spacing: -0.03em; color: var(--text); margin-bottom: 1rem; line-height: 1.2;
 }
-.contact-text h2 em {
-  font-family: var(--font-italic); font-style: italic;
-  color: var(--role-c); transition: color 0.35s;
-}
+.contact-text h2 em { font-family: var(--font-italic); font-style: italic; color: var(--accent); }
 .contact-text p { font-size: 15px; color: var(--text3); font-weight: 300; margin-bottom: 2rem; }
-
 .contact-details { display: flex; flex-direction: column; gap: 12px; }
 .contact-row {
   display: flex; align-items: center; gap: 10px;
-  font-size: 14px; color: var(--text2); text-decoration: none;
-  transition: color 0.2s;
+  font-size: 14px; color: var(--text2); text-decoration: none; transition: color 0.2s;
 }
-.contact-row:hover { color: var(--role-c); }
+.contact-row:hover { color: var(--accent); }
 .contact-icon {
   width: 36px; height: 36px; border-radius: 8px;
-  background: var(--role-bg); display: flex; align-items: center;
+  background: var(--accent-bg); display: flex; align-items: center;
   justify-content: center; font-size: 15px; flex-shrink: 0;
-  transition: background 0.35s;
+  transition: background 0.3s;
 }
 
-/* ─── BUTTONS ─────────────────────────────────────────── */
-.btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--font-body); font-size: 14px; font-weight: 500;
-  padding: 11px 26px; border-radius: 8px; cursor: pointer;
-  text-decoration: none; transition: all 0.2s; border: none; letter-spacing: 0.01em;
-}
-.btn-primary {
-  background: var(--role-c); color: white;
-  transition: background 0.35s, opacity 0.2s;
-}
-.btn-primary:hover { opacity: 0.87; }
-.btn-outline {
-  background: transparent; color: var(--text2);
-  border: 1.5px solid var(--border);
-}
-.btn-outline:hover { border-color: var(--role-c); color: var(--role-c); }
-
-/* ─── FOOTER ──────────────────────────────────────────── */
+/* ── FOOTER ── */
 footer {
   background: var(--surface); border-top: 1px solid var(--border);
   padding: 2rem 3rem; display: flex; justify-content: space-between;
   align-items: center; font-size: 13px; color: var(--text3);
   transition: background 0.3s, border-color 0.3s;
 }
-footer span { color: var(--role-c); transition: color 0.35s; }
+footer span { color: var(--accent); }
 
-/* ─── SCROLL REVEAL ───────────────────────────────────── */
-.reveal {
-  opacity: 0; transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 
-/* ─── RESPONSIVE ──────────────────────────────────────── */
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .stat-grid { grid-template-columns: repeat(4,1fr); }
-  .tl-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .stat-grid { grid-template-columns: repeat(4, 1fr); }
+  .research-card { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
+  .tl-item { grid-template-columns: 1fr; gap: 0.5rem; }
 }
 @media (max-width: 640px) {
   nav { padding: 0 1.25rem; }
   .nav-links { display: none; }
   .container { padding: 0 1.25rem; }
-  .role-bar-label { display: none; }
   .stat-grid { grid-template-columns: 1fr 1fr; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
@@ -427,7 +320,6 @@ footer span { color: var(--role-c); transition: color 0.35s; }
 </head>
 <body>
 
-<!-- ── NAV ── -->
 <nav>
   <a href="#about" class="nav-logo">Dimple Singh</a>
   <div class="nav-right">
@@ -436,93 +328,40 @@ footer span { color: var(--role-c); transition: color 0.35s; }
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#research">Research</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
-      <button class="theme-toggle-btn active" id="btn-light">☀</button>
-      <button class="theme-toggle-btn" id="btn-dark">◑</button>
+    <div class="theme-toggle" onclick="toggleTheme()">
+      <button class="ttbtn on" id="btn-light">☀</button>
+      <button class="ttbtn" id="btn-dark">◑</button>
     </div>
   </div>
 </nav>
-
-<!-- ── ROLE BAR ── -->
-<div class="role-bar">
-  <span class="role-bar-label">Viewing as:</span>
-  <button class="role-btn active" data-role="sde" onclick="setRole('sde')"><span class="role-dot"></span>SDE</button>
-  <button class="role-btn" data-role="qa" onclick="setRole('qa')"><span class="role-dot"></span>QA Engineer</button>
-  <button class="role-btn" data-role="apm" onclick="setRole('apm')"><span class="role-dot"></span>Assoc. PM</button>
-</div>
 
 <div class="site">
 
 <!-- ── ABOUT ── -->
 <section id="about" class="about-section">
   <div class="container">
-    <div class="section-kicker">About</div>
-
-    <!-- SDE -->
-    <div class="role-panel active" data-role="sde">
-      <h1 class="heading-display">Who I <em>Am</em></h1>
-      <div class="about-grid">
-        <div class="about-body reveal">
-          <p>I'm a Software Engineer with hands-on experience designing and delivering production-grade, cloud-based systems. At Tata Consultancy Services, I built RESTful APIs and full-stack applications supporting 10,000+ users — shipping features, owning CI/CD pipelines, and leading code quality initiatives.</p>
-          <p>Currently completing my Master of Science in Computer Science at the University of Texas at Arlington, deepening my expertise in distributed systems and modern software architecture.</p>
-          <p>I thrive at the intersection of backend engineering and DevOps — turning complex requirements into clean, testable, well-deployed software that actually scales.</p>
-          <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-            <a href="mailto:dimplesingh8364@gmail.com" class="btn btn-primary">Get in Touch →</a>
-            <a href="https://linkedin.com/in/dimple-singh-353981158" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-          </div>
+    <div class="kicker">About</div>
+    <h1 class="h-display">Who I <em>Am</em></h1>
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-body">
+          <p>I'm a Software Engineer with 3+ years of experience designing and delivering production-grade, cloud-based systems. At Tata Consultancy Services, I built RESTful APIs and full-stack applications supporting 10,000+ users — shipping features, owning CI/CD pipelines, and leading code quality initiatives.</p>
+          <p>Recently graduated with my Master's degree in Computer Science at the University of Texas at Arlington, where I've expanded into machine learning and NLP — including a published research project on fine-grained emotion detection using DistilBERT.</p>
+          <p>I thrive at the intersection of engineering, quality, and product thinking — turning complex requirements into clean, testable, well-deployed software that actually scales.</p>
         </div>
-        <div class="stat-grid reveal">
-          <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Years Professional Experience</div></div>
-          <div class="stat-card"><div class="stat-num">10K+</div><div class="stat-label">Users on Production Systems</div></div>
-          <div class="stat-card"><div class="stat-num">50+</div><div class="stat-label">Critical Vulnerabilities Patched</div></div>
-          <div class="stat-card"><div class="stat-num">60%</div><div class="stat-label">Faster Delivery via CI/CD</div></div>
+        <div class="cta-row">
+          <a href="mailto:dimplesingh8364@gmail.com" class="btn btn-primary">Get in Touch →</a>
+          <a href="https://linkedin.com/in/dimple-singh-353981158" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
         </div>
       </div>
-    </div>
-
-    <!-- QA -->
-    <div class="role-panel" data-role="qa">
-      <h1 class="heading-display">What I <em>Test</em></h1>
-      <div class="about-grid">
-        <div class="about-body reveal">
-          <p>I'm a QA Engineer and SDET with 3+ years of hands-on experience automating test strategies and running security assessments for enterprise-grade systems at Tata Consultancy Services — on a platform with 10,000+ active users.</p>
-          <p>I design test frameworks from scratch, integrate automation into CI/CD pipelines, and perform deep security testing (SAST/DAST, penetration testing with Burp Suite Pro). I participated in TCS's Internal Ethical Hacking Contest and authored original CTF challenges.</p>
-          <p>Quality isn't a phase at the end — it's a gate I build into every stage of the pipeline. Currently completing my M.S. in Computer Science at UT Arlington.</p>
-          <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-            <a href="mailto:dimplesingh8364@gmail.com" class="btn btn-primary">Get in Touch →</a>
-            <a href="https://linkedin.com/in/dimple-singh-353981158" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-          </div>
-        </div>
-        <div class="stat-grid reveal">
-          <div class="stat-card"><div class="stat-num">35%</div><div class="stat-label">Test Cycle Time Reduction</div></div>
-          <div class="stat-card"><div class="stat-num">95%</div><div class="stat-label">Defects Resolved in 24 Hours</div></div>
-          <div class="stat-card"><div class="stat-num">50+</div><div class="stat-label">Critical Vulnerabilities Patched</div></div>
-          <div class="stat-card"><div class="stat-num">60%</div><div class="stat-label">Faster Delivery via CI/CD</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- APM -->
-    <div class="role-panel" data-role="apm">
-      <h1 class="heading-display">How I <em>Think</em></h1>
-      <div class="about-grid">
-        <div class="about-body reveal">
-          <p>I'm a software engineer transitioning into product management — with 3+ years shipping features, owning delivery pipelines, and coordinating cross-functional teams at Tata Consultancy Services on a platform with 10,000+ users.</p>
-          <p>I've always cared about the "why" behind what I build — defining requirements, measuring outcomes, and translating between business needs and engineering realities. My technical fluency makes me a stronger PM candidate than most.</p>
-          <p>Currently pursuing my M.S. in Computer Science at UT Arlington  and actively targeting Associate PM programs where engineering depth meets product ambition.</p>
-          <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-            <a href="mailto:dimplesingh8364@gmail.com" class="btn btn-primary">Get in Touch →</a>
-            <a href="https://linkedin.com/in/dimple-singh-353981158" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-          </div>
-        </div>
-        <div class="stat-grid reveal">
-          <div class="stat-card"><div class="stat-num">10K+</div><div class="stat-label">Users on Platform I Shipped For</div></div>
-          <div class="stat-card"><div class="stat-num">60%</div><div class="stat-label">Faster Delivery — Initiative I Led</div></div>
-          <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Years Cross-functional Delivery</div></div>
-          <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Products Scoped & Shipped End-to-End</div></div>
-        </div>
+      <div class="stat-grid reveal">
+        <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Years Professional Experience</div></div>
+        <div class="stat-card"><div class="stat-num">10K+</div><div class="stat-label">Users on Production Systems</div></div>
+        <div class="stat-card"><div class="stat-num">50+</div><div class="stat-label">Critical Vulnerabilities Patched</div></div>
+        <div class="stat-card"><div class="stat-num">60%</div><div class="stat-label">Faster Delivery via CI/CD</div></div>
       </div>
     </div>
   </div>
@@ -531,43 +370,36 @@ footer span { color: var(--role-c); transition: color 0.35s; }
 <!-- ── SKILLS ── -->
 <section id="skills" class="skills-section">
   <div class="container">
-    <div class="section-kicker">Skills</div>
-
-    <!-- SDE -->
-    <div class="role-panel active" data-role="sde">
-      <h2 class="heading-display">Tech <em>Stack</em></h2>
-      <div class="skills-cards reveal">
-        <div class="skill-card"><div class="skill-cat">Languages</div><div class="tag-group"><span class="tag t-purple">Java</span><span class="tag t-purple">JavaScript</span><span class="tag t-purple">C++</span><span class="tag t-purple">C</span><span class="tag t-purple">SQL</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Frameworks & APIs</div><div class="tag-group"><span class="tag t-green">Spring Boot</span><span class="tag t-green">React.js</span><span class="tag t-green">Angular</span><span class="tag t-green">React Native</span><span class="tag t-green">Node.js</span><span class="tag t-green">Next.js</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Cloud & DevOps</div><div class="tag-group"><span class="tag t-orange">AWS EC2/S3</span><span class="tag t-orange">GCP</span><span class="tag t-orange">Docker</span><span class="tag t-orange">Kubernetes</span><span class="tag t-orange">Jenkins</span><span class="tag t-orange">CI/CD</span><span class="tag t-orange">GitLab</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Databases</div><div class="tag-group"><span class="tag t-blue">PostgreSQL</span><span class="tag t-blue">MySQL</span><span class="tag t-blue">DynamoDB</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Testing & Security</div><div class="tag-group"><span class="tag t-rose">JUnit</span><span class="tag t-rose">Selenium</span><span class="tag t-rose">JMeter</span><span class="tag t-rose">SonarQube</span><span class="tag t-rose">Fortify</span><span class="tag t-rose">SAST/DAST</span><span class="tag t-rose">Burp Suite</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Tools</div><div class="tag-group"><span class="tag t-teal">Postman</span><span class="tag t-teal">GitHub Copilot</span><span class="tag t-teal">Claude Code</span><span class="tag t-teal">Android Studio</span><span class="tag t-teal">JIRA</span></div></div>
+    <div class="kicker">Skills</div>
+    <h2 class="h-display">Tech <em>Stack</em></h2>
+    <div class="skills-cards reveal">
+      <div class="skill-card">
+        <div class="skill-cat">Languages</div>
+        <div class="tag-group"><span class="tag t-purple">Java</span><span class="tag t-purple">JavaScript</span><span class="tag t-purple">C++</span><span class="tag t-purple">C</span><span class="tag t-purple">SQL</span></div>
       </div>
-    </div>
-
-    <!-- QA -->
-    <div class="role-panel" data-role="qa">
-      <h2 class="heading-display">QA <em>Arsenal</em></h2>
-      <div class="skills-cards reveal">
-        <div class="skill-card"><div class="skill-cat">Test Automation</div><div class="tag-group"><span class="tag t-green">Selenium WebDriver</span><span class="tag t-green">JUnit</span><span class="tag t-green">TestNG</span><span class="tag t-green">JMeter</span><span class="tag t-green">Postman</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Security Testing</div><div class="tag-group"><span class="tag t-rose">Burp Suite Pro</span><span class="tag t-rose">SonarQube</span><span class="tag t-rose">Fortify</span><span class="tag t-rose">SAST</span><span class="tag t-rose">DAST</span><span class="tag t-rose">OWASP</span><span class="tag t-rose">Pen Testing</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Testing Types</div><div class="tag-group"><span class="tag t-purple">Manual</span><span class="tag t-purple">Functional</span><span class="tag t-purple">Regression</span><span class="tag t-purple">Integration</span><span class="tag t-purple">E2E</span><span class="tag t-purple">API</span><span class="tag t-purple">Performance</span><span class="tag t-purple">UAT</span></div></div>
-        <div class="skill-card"><div class="skill-cat">CI/CD & DevOps</div><div class="tag-group"><span class="tag t-orange">Jenkins</span><span class="tag t-orange">GitLab CI</span><span class="tag t-orange">Docker</span><span class="tag t-orange">AWS</span><span class="tag t-orange">GCP</span><span class="tag t-orange">Maven</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Languages</div><div class="tag-group"><span class="tag t-blue">Java</span><span class="tag t-blue">JavaScript</span><span class="tag t-blue">SQL</span><span class="tag t-blue">Spring Boot</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Tools</div><div class="tag-group"><span class="tag t-teal">JIRA</span><span class="tag t-teal">GitHub</span><span class="tag t-teal">Android Studio</span><span class="tag t-teal">Claude Code</span></div></div>
+      <div class="skill-card">
+        <div class="skill-cat">Frameworks & APIs</div>
+        <div class="tag-group"><span class="tag t-green">Spring Boot</span><span class="tag t-green">React.js</span><span class="tag t-green">Angular</span><span class="tag t-green">React Native</span><span class="tag t-green">Node.js</span><span class="tag t-green">Next.js</span></div>
       </div>
-    </div>
-
-    <!-- APM -->
-    <div class="role-panel" data-role="apm">
-      <h2 class="heading-display">PM <em>Toolkit</em></h2>
-      <div class="skills-cards reveal">
-        <div class="skill-card"><div class="skill-cat">Product Management</div><div class="tag-group"><span class="tag t-purple">Roadmapping</span><span class="tag t-purple">PRD Writing</span><span class="tag t-purple">User Stories</span><span class="tag t-purple">OKRs</span><span class="tag t-purple">A/B Testing</span><span class="tag t-purple">Go-to-Market</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Delivery & Execution</div><div class="tag-group"><span class="tag t-green">Agile / Scrum</span><span class="tag t-green">Sprint Planning</span><span class="tag t-green">Backlog Prioritization</span><span class="tag t-green">Release Mgmt</span><span class="tag t-green">JIRA</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Stakeholder & Analytics</div><div class="tag-group"><span class="tag t-orange">Requirements Gathering</span><span class="tag t-orange">Stakeholder Mgmt</span><span class="tag t-orange">KPI Definition</span><span class="tag t-orange">Data Analysis</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Technical Fluency</div><div class="tag-group"><span class="tag t-blue">REST APIs</span><span class="tag t-blue">System Design</span><span class="tag t-blue">CI/CD</span><span class="tag t-blue">Cloud (AWS/GCP)</span><span class="tag t-blue">SQL</span></div></div>
-        <div class="skill-card"><div class="skill-cat">Tools</div><div class="tag-group"><span class="tag t-teal">JIRA</span><span class="tag t-teal">Postman</span><span class="tag t-teal">GitHub</span><span class="tag t-teal">Claude Code</span><span class="tag t-teal">MS Office</span></div></div>
+      <div class="skill-card">
+        <div class="skill-cat">Cloud & DevOps</div>
+        <div class="tag-group"><span class="tag t-orange">AWS EC2/S3</span><span class="tag t-orange">GCP</span><span class="tag t-orange">Docker</span><span class="tag t-orange">Kubernetes</span><span class="tag t-orange">Jenkins</span><span class="tag t-orange">CI/CD</span><span class="tag t-orange">GitLab</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Databases</div>
+        <div class="tag-group"><span class="tag t-blue">PostgreSQL</span><span class="tag t-blue">MySQL</span><span class="tag t-blue">DynamoDB</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Testing & Security</div>
+        <div class="tag-group"><span class="tag t-rose">JUnit</span><span class="tag t-rose">Selenium</span><span class="tag t-rose">JMeter</span><span class="tag t-rose">Burp Suite Pro</span><span class="tag t-rose">SonarQube</span><span class="tag t-rose">Fortify</span><span class="tag t-rose">SAST/DAST</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">ML & NLP</div>
+        <div class="tag-group"><span class="tag t-teal">Python</span><span class="tag t-teal">DistilBERT</span><span class="tag t-teal">HuggingFace</span><span class="tag t-teal">PyTorch</span><span class="tag t-teal">scikit-learn</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Tools</div>
+        <div class="tag-group"><span class="tag t-amber">Postman</span><span class="tag t-amber">GitHub Copilot</span><span class="tag t-amber">Claude Code</span><span class="tag t-amber">Android Studio</span><span class="tag t-amber">JIRA</span></div>
       </div>
     </div>
   </div>
@@ -576,69 +408,44 @@ footer span { color: var(--role-c); transition: color 0.35s; }
 <!-- ── EXPERIENCE ── -->
 <section id="experience" class="exp-section">
   <div class="container">
-    <div class="section-kicker">Experience</div>
+    <div class="kicker">Experience</div>
+    <h2 class="h-display">Where I've <em>Worked</em></h2>
+    <div class="timeline reveal">
 
-    <!-- SDE -->
-    <div class="role-panel active" data-role="sde">
-      <h2 class="heading-display">Where I've <em>Worked</em></h2>
-      <div class="timeline reveal">
-        <div class="tl-item">
-          <div><div class="tl-date">Jul 2021 – Jul 2024</div><div class="tl-company">Tata Consultancy Services</div></div>
-          <div>
-            <div class="tl-role">Software Engineer</div>
-            <div class="tl-stack">Java · Spring Boot · PostgreSQL · Angular · Jenkins · GCP · Docker · Kubernetes</div>
-            <ul class="tl-bullets">
-              <li>Designed and developed versioned RESTful APIs with Spring Boot, powering a platform with 10,000+ active users; documented all endpoints in Postman for streamlined frontend-backend integration.</li>
-              <li>Built and maintained CI/CD pipelines with Jenkins and GitLab, reducing delivery time by 60% through automated builds and pre-QA quality gates.</li>
-              <li>Managed 10+ GCP instances (Compute Engine, Cloud Storage), contributing to 20% improvement in application uptime.</li>
-              <li>Implemented unit, integration, stress, and performance testing using JUnit and JMeter — cutting test cycle time by 35%.</li>
-              <li>Promoted from Trainee to Software Engineer in 15 months; led a cross-functional delivery team across multiple releases.</li>
-            </ul>
-          </div>
+      <div class="tl-item">
+        <div>
+          <div class="tl-date">Oct 2022 – Jul 2024</div>
+          <div class="tl-company">Tata Consultancy Services</div>
+        </div>
+        <div>
+          <div class="tl-role">Software Engineer</div>
+          <div class="tl-stack">Java · Spring Boot · PostgreSQL · Angular · Jenkins · GCP · Docker · Kubernetes</div>
+          <ul class="tl-bullets">
+            <li>Architected and delivered a versioned RESTful API platform using Spring Boot that scaled to 10,000+ concurrent users — owning the full lifecycle from design and documentation to deployment and monitoring across 10+ GCP instances.</li>
+            <li>Identified a systemic delivery bottleneck across build, test, and release stages; redesigned the CI/CD pipeline in Jenkins and GitLab with automated quality gates, slashing end-to-end delivery time by 60% and eliminating the class of last-minute release failures that had plagued the team.</li>
+            <li>Built a comprehensive test automation strategy from scratch — unit, integration, stress, and performance suites using JUnit and JMeter — cutting test cycle time by 35% and shifting quality left so defects never reached production.</li>
+            <li>Drove a zero-tolerance security posture: ran SAST/DAST scans (SonarQube, Fortify) that resolved 95% of defects within 24 hours, and conducted hands-on penetration testing with Burp Suite Pro that uncovered and closed 50+ critical vulnerabilities — reducing incident response time by 20%.</li>
+            <li>Competed in TCS's internal Ethical Hacking Contest (BEH 2022 & 2023) — one of the few engineers selected to author original Capture The Flag challenges, demonstrating recognized expertise in offensive security techniques.</li>
+            <li>Fast-tracked from Trainee to Software Engineer in just 15 months — the floor average was 24 — then led a cross-functional team through sprint planning, technical reviews, and multi-release delivery ownership.</li>
+          </ul>
         </div>
       </div>
-    </div>
 
-    <!-- QA -->
-    <div class="role-panel" data-role="qa">
-      <h2 class="heading-display">Where I've <em>Tested</em></h2>
-      <div class="timeline reveal">
-        <div class="tl-item">
-          <div><div class="tl-date">Jul 2021 – Jul 2024</div><div class="tl-company">Tata Consultancy Services</div></div>
-          <div>
-            <div class="tl-role">QA / Software Engineer</div>
-            <div class="tl-stack">Selenium · JUnit · JMeter · Burp Suite Pro · SonarQube · Fortify · Jenkins · GCP</div>
-            <ul class="tl-bullets">
-              <li>Designed and executed test strategies (unit, integration, stress, performance) using JUnit and JMeter — cutting test cycle time by 35% across a platform with 10,000+ users.</li>
-              <li>Built Selenium automation suites integrated as CI/CD quality gates in Jenkins/GitLab pipelines, reducing delivery time by 60%.</li>
-              <li>Led SAST/DAST security testing with SonarQube and Fortify; resolved 95% of defects within 24 hours using Jenkins logs and scan reports.</li>
-              <li>Conducted penetration testing with Burp Suite Pro — patched 50+ critical vulnerabilities, reducing security incident response time by 20%.</li>
-              <li>Participated in TCS Internal Ethical Hacking Contest (BEH 2022/2023) and authored original CTF challenges.</li>
-            </ul>
-          </div>
+      <div class="tl-item">
+        <div>
+          <div class="tl-date">Jul 2021 – Oct 2022</div>
+          <div class="tl-company">Tata Consultancy Services</div>
+        </div>
+        <div>
+          <div class="tl-role">Assistant System Engineer → Trainee</div>
+          <div class="tl-stack">Angular · Spring Boot · PostgreSQL · Ionic · Selenium · JUnit</div>
+          <ul class="tl-bullets">
+            <li>Delivered two production-grade internal applications end-to-end — a hospital management system and a pharmacy mobile app (Ionic + Spring Boot) — taking each from requirements through deployment as part of cross-functional teams.</li>
+            <li>Owned regression quality for a live client web application: authored and maintained Selenium and JUnit test suites that caught breaking changes before they reached users, sprint after sprint.</li>
+          </ul>
         </div>
       </div>
-    </div>
 
-    <!-- APM -->
-    <div class="role-panel" data-role="apm">
-      <h2 class="heading-display">What I've <em>Shipped</em></h2>
-      <div class="timeline reveal">
-        <div class="tl-item">
-          <div><div class="tl-date">Jul 2021 – Jul 2024</div><div class="tl-company">Tata Consultancy Services</div></div>
-          <div>
-            <div class="tl-role">Software Engineer (Product & Delivery)</div>
-            <div class="tl-stack">Java · Spring Boot · REST APIs · Angular · Jenkins · GCP · Agile</div>
-            <ul class="tl-bullets">
-              <li>Owned end-to-end delivery of a versioned API platform for 10,000+ users — prioritized features, defined acceptance criteria, and coordinated cross-functional engineering and QA teams.</li>
-              <li>Identified a delivery bottleneck and co-led a CI/CD quality gate initiative — aligned stakeholders and tracked outcomes to a 60% improvement in delivery speed.</li>
-              <li>Defined quality and testing requirements across the product lifecycle; drove 35% reduction in test cycle time and 95% same-day defect resolution.</li>
-              <li>Led security remediation roadmap using SAST/DAST findings — prioritized 50+ vulnerabilities by severity and business impact; reduced incident response time by 20%.</li>
-              <li>Promoted from Trainee to SWE in 15 months; led sprint planning and delivery quality across multiple product release cycles.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -646,79 +453,81 @@ footer span { color: var(--role-c); transition: color 0.35s; }
 <!-- ── PROJECTS ── -->
 <section id="projects" class="projects-section">
   <div class="container">
-    <div class="section-kicker">Projects</div>
+    <div class="kicker">Projects</div>
+    <h2 class="h-display">What I've <em>Built</em></h2>
+    <div class="projects-grid reveal">
 
-    <!-- SDE -->
-    <div class="role-panel active" data-role="sde">
-      <h2 class="heading-display">What I've <em>Built</em></h2>
-      <div class="projects-grid reveal">
-        <div class="project-card">
-          <div class="project-type">Mobile · Full-Stack · Cloud</div>
-          <div class="project-name">Conference Management App</div>
-          <div class="project-body">Built a full-stack mobile platform for conference management with real-time scheduling, attendee engagement, and low-latency RESTful API endpoints. OAuth 2.0 secure authentication reduced unauthorized access by 40%. Deployed on AWS (EC2, S3).</div>
-          <div class="project-tags"><span class="project-tag">Android</span><span class="project-tag">React Native</span><span class="project-tag">Spring Boot</span><span class="project-tag">MySQL</span><span class="project-tag">AWS</span><span class="project-tag">OAuth 2.0</span></div>
+      <div class="project-card">
+        <div class="project-type">Mobile · Full-Stack · Cloud · Security</div>
+        <div class="project-name">Conference Management Platform</div>
+        <div class="project-body">Designed and shipped a cross-platform mobile conference system handling real-time scheduling, live attendee coordination, and event management — all backed by sub-100ms RESTful API endpoints built with Spring Boot. Security wasn't an afterthought: OAuth 2.0 authentication was architected from day one, reducing unauthorized access attempts by 40%. Deployed with production-grade AWS infrastructure (EC2 + S3) and validated against availability SLAs before launch.</div>
+        <div class="project-tags"><span class="project-tag">Android</span><span class="project-tag">React Native</span><span class="project-tag">Spring Boot</span><span class="project-tag">MySQL</span><span class="project-tag">AWS EC2/S3</span><span class="project-tag">OAuth 2.0</span><span class="project-tag">JUnit</span><span class="project-tag">REST APIs</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">Web · E-Commerce · Payments · CI/CD</div>
+        <div class="project-name">E-Commerce Web Application</div>
+        <div class="project-body">Built a production-ready e-commerce platform from the ground up — real-time cart state via React hooks, a full product catalog, and a checkout flow that handles real money. Integrated Stripe API and engineered JWT session management with security-first requirements defined before the first line of code was written. The result: a 25% drop in fraudulent transactions post-launch. Shipped with full E2E and API contract test coverage, deployed through an automated CI/CD pipeline.</div>
+        <div class="project-tags"><span class="project-tag">React.js</span><span class="project-tag">Next.js</span><span class="project-tag">Node.js</span><span class="project-tag">MySQL</span><span class="project-tag">Stripe API</span><span class="project-tag">JWT</span><span class="project-tag">Selenium</span><span class="project-tag">CI/CD</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">NLP · Deep Learning · Research · UT Arlington</div>
+        <div class="project-name">Fine-Grained Emotion Detection with DistilBERT</div>
+        <div class="project-body">Most sentiment models give you positive, negative, or neutral. This gives you eight — simultaneously. Fine-tuned DistilBERT on 58,000 annotated Reddit comments to classify multi-label, co-occurring emotions (think: "nervous but excited") using the GoEmotions dataset. Solved three hard ML problems head-on: class imbalance via weighted loss functions, catastrophic forgetting via dual learning rates, and per-class precision via individual threshold calibration. Final Micro-F1 of 0.8339 — an 81% improvement over Google's published BERT baseline on the same dataset.</div>
+        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">DistilBERT</span><span class="project-tag">HuggingFace</span><span class="project-tag">PyTorch</span><span class="project-tag">Multi-label Classification</span><span class="project-tag">AdamW</span><span class="project-tag">GoEmotions</span><span class="project-tag">NLP</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── RESEARCH ── -->
+<section id="research" class="research-section">
+  <div class="container">
+    <div class="kicker">Research</div>
+    <h2 class="h-display">What I've <em>Discovered</em></h2>
+    <div class="research-card reveal">
+      <div>
+        <div class="research-label">NLP · Deep Learning · Machine Learning · UT Arlington</div>
+        <div class="research-title">Fine-Grained Emotion Detection in Text using DistilBERT</div>
+        <div class="research-body">
+          Fine-tuned a DistilBERT Transformer model on the GoEmotions dataset — 58,000 Reddit comments annotated for 27 emotion categories — for multi-label emotion classification consolidated into 8 broad categories. Framed the task as a multi-label classification problem to capture co-occurring emotions (e.g. fear and joy simultaneously), overcoming the limitations of traditional single-label sentiment analysis.
         </div>
-        <div class="project-card">
-          <div class="project-type">Web · E-Commerce · Payments</div>
-          <div class="project-name">E-Commerce Web Application</div>
-          <div class="project-body">Designed and built a fully responsive e-commerce platform with product catalog, cart, and secure checkout. Integrated Stripe API and JWT session management — security measures contributed to 25% reduction in fraudulent transactions. Deployed via CI/CD.</div>
-          <div class="project-tags"><span class="project-tag">React.js</span><span class="project-tag">Next.js</span><span class="project-tag">Node.js</span><span class="project-tag">MySQL</span><span class="project-tag">Stripe</span><span class="project-tag">JWT</span><span class="project-tag">CI/CD</span></div>
+        <div class="research-body">
+          Engineered a training pipeline with three key innovations: <strong>class-balanced loss weighting</strong> to address dataset imbalance across rare emotions like fear and disgust; <strong>dual learning rates</strong> (lower for pre-trained layers, higher for the classification head) to prevent catastrophic forgetting; and <strong>per-emotion threshold tuning</strong> to optimise precision-recall for each class independently. The resulting system achieved a Micro-F1 of 0.8339 and Macro-F1 of 0.81 — an 81% relative improvement over the published GoEmotions BERT baseline.
         </div>
-        <div class="project-card">
-          <div class="project-type">NLP · Deep Learning · Research</div>
-          <div class="project-name">Fine-Grained Emotion Detection with DistilBERT</div>
-          <div class="project-body">Fine-tuned a DistilBERT Transformer model on the GoEmotions dataset (58K Reddit comments) for multi-label emotion classification across 8 categories. Engineered a training pipeline with class-balanced loss, dual learning rates, and per-emotion threshold tuning — achieving a Micro-F1 score of 0.8339, an 81% improvement over the baseline BERT model on the same dataset.</div>
-          <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">DistilBERT</span><span class="project-tag">HuggingFace</span><span class="project-tag">PyTorch</span><span class="project-tag">NLP</span><span class="project-tag">Multi-label Classification</span><span class="project-tag">GoEmotions</span></div>
+        <div class="research-tags">
+          <span class="research-tag">Python</span>
+          <span class="research-tag">DistilBERT</span>
+          <span class="research-tag">HuggingFace</span>
+          <span class="research-tag">PyTorch</span>
+          <span class="research-tag">Multi-label Classification</span>
+          <span class="research-tag">NLP</span>
+          <span class="research-tag">GoEmotions</span>
+          <span class="research-tag">AdamW</span>
         </div>
       </div>
-    </div>
-
-    <!-- QA -->
-    <div class="role-panel" data-role="qa">
-      <h2 class="heading-display">What I've <em>Tested</em></h2>
-      <div class="projects-grid reveal">
-        <div class="project-card">
-          <div class="project-type">Security · API Testing · Mobile</div>
-          <div class="project-name">Conference Management App</div>
-          <div class="project-body">Designed and executed functional, integration, and security test cases for a full-stack mobile platform. OAuth 2.0 authentication testing reduced unauthorized login vulnerabilities by 40%. Validated all REST API contracts and tested AWS deployment reliability pre-launch.</div>
-          <div class="project-tags"><span class="project-tag">JUnit</span><span class="project-tag">OAuth 2.0</span><span class="project-tag">API Testing</span><span class="project-tag">AWS</span><span class="project-tag">React Native</span></div>
+      <div class="research-metrics">
+        <div class="rm-item">
+          <div class="rm-num">0.8339</div>
+          <div class="rm-label">Micro-F1 Score</div>
         </div>
-        <div class="project-card">
-          <div class="project-type">E2E · Payment Security · CI/CD</div>
-          <div class="project-name">E-Commerce Web Application</div>
-          <div class="project-body">Wrote E2E and integration tests validating API contracts and Stripe payment flows. Security testing on JWT session management contributed to 25% reduction in fraudulent transactions. Automated regression runs via CI/CD pipeline.</div>
-          <div class="project-tags"><span class="project-tag">Selenium</span><span class="project-tag">E2E Testing</span><span class="project-tag">Stripe</span><span class="project-tag">JWT</span><span class="project-tag">CI/CD</span></div>
+        <div class="rm-item">
+          <div class="rm-num">0.81</div>
+          <div class="rm-label">Macro-F1 Score</div>
         </div>
-        <div class="project-card">
-          <div class="project-type">ML Model Validation · Fairness Testing · NLP</div>
-          <div class="project-name">Fine-Grained Emotion Detection with DistilBERT</div>
-          <div class="project-body">Applied rigorous ML model validation methodology to a multi-label NLP classifier. Implemented multi-label stratified splits to ensure proportional class representation across train/val/test sets. Validated fairness by comparing Micro-F1 (0.8339) against Macro-F1 (0.81) to confirm the model wasn't biased toward dominant emotion classes. Used per-emotion threshold tuning to optimise precision-recall trade-offs for each class independently — a technique directly analogous to per-feature acceptance criteria in software QA.</div>
-          <div class="project-tags"><span class="project-tag">Model Validation</span><span class="project-tag">Stratified Splits</span><span class="project-tag">Precision-Recall</span><span class="project-tag">Fairness Testing</span><span class="project-tag">Python</span><span class="project-tag">DistilBERT</span></div>
+        <div class="rm-item">
+          <div class="rm-num">+81%</div>
+          <div class="rm-label">vs. published BERT baseline</div>
         </div>
-      </div>
-    </div>
-
-    <!-- APM -->
-    <div class="role-panel" data-role="apm">
-      <h2 class="heading-display">What I've <em>Defined</em></h2>
-      <div class="projects-grid reveal">
-        <div class="project-card">
-          <div class="project-type">MVP Scoping · Security Requirements</div>
-          <div class="project-name">Conference Management App</div>
-          <div class="project-body">Led product definition for a mobile conference platform. Scoped MVP around core user needs, defined OAuth 2.0 as a non-negotiable security requirement upfront — reducing unauthorized logins by 40%. Validated launch readiness against pre-defined acceptance criteria.</div>
-          <div class="project-tags"><span class="project-tag">MVP Scoping</span><span class="project-tag">Requirements</span><span class="project-tag">Acceptance Criteria</span><span class="project-tag">AWS</span></div>
+        <div class="rm-item">
+          <div class="rm-num">58K</div>
+          <div class="rm-label">Training samples (GoEmotions)</div>
         </div>
-        <div class="project-card">
-          <div class="project-type">Product Delivery · Metrics · Payments</div>
-          <div class="project-name">E-Commerce Web Application</div>
-          <div class="project-body">Defined product scope and success metrics for an e-commerce platform. Specified JWT and Stripe payment security requirements before development — resulting in 25% fewer fraudulent transactions post-launch. Validated CI/CD release quality.</div>
-          <div class="project-tags"><span class="project-tag">Product Definition</span><span class="project-tag">User Stories</span><span class="project-tag">Success Metrics</span><span class="project-tag">Stripe</span></div>
-        </div>
-        <div class="project-card">
-          <div class="project-type">Research · Data-Driven Decisions · NLP</div>
-          <div class="project-name">Fine-Grained Emotion Detection with DistilBERT</div>
-          <div class="project-body">Led the product framing and analytical decisions for an ML research project. Defined the problem scope (27 → 8 emotion categories), identified class imbalance as the critical risk, and designed a fairness-first evaluation framework using both Micro-F1 and Macro-F1 metrics. The resulting model achieved a Micro-F1 of 0.8339 — an 81% improvement over the published baseline — validating that problem framing and success metric definition matter as much as the model itself.</div>
-          <div class="project-tags"><span class="project-tag">Problem Framing</span><span class="project-tag">Success Metrics</span><span class="project-tag">Fairness</span><span class="project-tag">NLP Research</span><span class="project-tag">DistilBERT</span><span class="project-tag">Python</span></div>
+        <div class="rm-item">
+          <div class="rm-num">8</div>
+          <div class="rm-label">Emotion categories classified</div>
         </div>
       </div>
     </div>
@@ -728,11 +537,11 @@ footer span { color: var(--role-c); transition: color 0.35s; }
 <!-- ── CONTACT ── -->
 <section id="contact" class="contact-section">
   <div class="container">
-    <div class="section-kicker">Contact</div>
+    <div class="kicker">Contact</div>
     <div class="contact-grid reveal">
       <div class="contact-text">
         <h2>Let's <em>Connect</em></h2>
-        <p>Open to SDE, QA Engineer, and Associate PM roles in the USA.<br>Dallas–Fort Worth, TX · Open to relocate ·</p>
+        <p>Primarily seeking Software Engineering roles in the USA — and open to Associate PM programs. Dallas–Fort Worth, TX · Open to relocate ·</p>
         <a href="mailto:dimplesingh8364@gmail.com" class="btn btn-primary">Send a Message →</a>
       </div>
       <div class="contact-details">
@@ -746,7 +555,7 @@ footer span { color: var(--role-c); transition: color 0.35s; }
           <div class="contact-icon">📍</div>Dallas–Fort Worth, TX · Open to relocate
         </div>
         <div class="contact-row">
-          <div class="contact-icon">🎓</div>M.S. CS · UT Arlington 
+          <div class="contact-icon">🎓</div>M.S. Computer Science · UT Arlington
         </div>
         <div class="contact-row">
           <div class="contact-icon">☁</div>AWS Certified Cloud Practitioner
@@ -756,61 +565,24 @@ footer span { color: var(--role-c); transition: color 0.35s; }
   </div>
 </section>
 
-</div><!-- .site -->
+</div>
 
 <footer>
   <div>© 2025 <span>Dimple Singh</span>. All rights reserved.</div>
-  <div>SDE · QA Engineer · Associate PM</div>
+  <div>Software Engineer · Dallas–Fort Worth, TX</div>
 </footer>
 
 <script>
-/* ── ROLE CONFIG ── */
-const ROLES = {
-  sde: { c:'#5B4DCC', bg:'#ede9ff', dark_bg:'#1e1b36' },
-  qa:  { c:'#0e7a5a', bg:'#e6f7f1', dark_bg:'#0e2820' },
-  apm: { c:'#b8420a', bg:'#fff0e8', dark_bg:'#2d1a0e' },
-};
+let theme = 'light';
 
-let currentRole = 'sde';
-let currentTheme = 'light';
-
-function setRole(role) {
-  currentRole = role;
-  const { c, bg, dark_bg } = ROLES[role];
-  const isDark = currentTheme === 'dark';
-
-  document.documentElement.style.setProperty('--role-c',  c);
-  document.documentElement.style.setProperty('--role-bg', isDark ? dark_bg : bg);
-
-  document.querySelectorAll('.role-panel').forEach(el => {
-    el.classList.toggle('active', el.dataset.role === role);
-  });
-  document.querySelectorAll('.role-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.role === role);
-  });
-
-  // re-trigger reveals for newly shown panels
-  document.querySelectorAll('.role-panel.active .reveal').forEach(el => {
-    if (!el.classList.contains('visible')) {
-      setTimeout(() => el.classList.add('visible'), 80);
-    }
-  });
-}
-
-/* ── THEME ── */
 function toggleTheme() {
-  currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', currentTheme);
-
-  document.getElementById('btn-light').classList.toggle('active', currentTheme === 'light');
-  document.getElementById('btn-dark').classList.toggle('active', currentTheme === 'dark');
-
-  // update role-bg for dark/light
-  const { bg, dark_bg } = ROLES[currentRole];
-  document.documentElement.style.setProperty('--role-bg', currentTheme === 'dark' ? dark_bg : bg);
+  theme = theme === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('btn-light').classList.toggle('on', theme === 'light');
+  document.getElementById('btn-dark').classList.toggle('on', theme === 'dark');
 }
 
-/* ── SCROLL REVEAL ── */
+// Scroll reveal
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
@@ -818,17 +590,13 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* ── ACTIVE NAV ── */
+// Active nav
 const navLinks = document.querySelectorAll('.nav-links a');
 const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
   let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 130) current = s.id;
-  });
-  navLinks.forEach(a => {
-    a.classList.toggle('active-nav', a.getAttribute('href') === '#' + current);
-  });
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) current = s.id; });
+  navLinks.forEach(a => a.classList.toggle('active-nav', a.getAttribute('href') === '#' + current));
 }, { passive: true });
 </script>
 </body>
